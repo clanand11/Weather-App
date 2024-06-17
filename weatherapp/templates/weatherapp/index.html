@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Weather App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- static/images/sky.jpg -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/33891a6c3e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div
+      class="container_main"
+      style="
+        height: 100vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.3)
+          ),
+          url('https://images.pexels.com/photos/209831/pexels-photo-209831.jpeg?cs=srgb&dl=pexels-pixabay-209831.jpg&fm=jpg');
+        background-size: cover;
+      "
+    >
+      <section class="heading_new">
+        <span
+          style="
+            display: flex;
+            align-items: self-start;
+            justify-content: space-evenly;
+          "
+        >
+          <img id="logo" src="{% static 'images/logo.png' %}" alt="" />
+          <a href="{% url 'main_page'%}" style="text-decoration: none"
+            ><h1 class="text-center">Weather App</h1></a
+          >
+        </span>
+
+        <div class="main">
+          <form method="POST">
+            {% csrf_token %}
+            <input id="city" type="text" name="city" placeholder="Enter City" />
+            <button class="btn btn-primary" type="submit" onclick="func()">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {% if error_msg %}
+      <p
+        style="
+          text-align: center;
+          color: antiquewhite;
+          font-size: 40px;
+          font-family: sans-serif;
+          background-color: rgba(10, 10, 10, 0.6);
+        "
+      >
+        {{error_msg}}
+      </p>
+      {% endif %}
+
+      <div class="container_both">
+        {% if weather_data %}
+        <div class="container_weather">
+          <div class="card">
+            <h2 style="text-align: center">{{weather_data.city}}</h2>
+            <h3 id="time">{{weather_data.day}}</h3>
+            <h2 style="text-align: center">{{weather_data.temp}} °C</h2>
+            <span
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+              "
+            >
+              <img
+                src="http://openweathermap.org/img/w/{{weather_data.icon}}.png"
+                alt="image"
+                style="width: 100px"
+              />
+              <p id="description">{{weather_data.description}}</p>
+            </span>
+          </div>
+        </div>
+
+        {% else %}
+
+        <div
+          class="container-fluid"
+          style="
+            margin: 17% auto;
+            width: 100%;
+            height: 50px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+          "
+        >
+          <h3
+            style="
+              background-color: rgba(247, 242, 242, 0.3);
+              text-align: center;
+              color: rgb(21, 20, 20);
+            "
+          >
+            Please type in the city above
+          </h3>
+        </div>
+
+        {% endif %} {% if forecast_data %}
+        <h2 class="text-center">5-days Forecast</h2>
+        <div class="container_forecast">
+          {% for data in forecast_data %}
+          <div class="container_for">
+            <h3>{{data.day}}</h3>
+            <p>{{data.temp}} °C</p>
+            <p id="description">{{data.description}}</p>
+            <img
+              src="http://openweathermap.org/img/w/{{data.icon}}.png"
+              alt="image"
+              style="width: 100px"
+            />
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function func() {
+        var cityInput = document.getElementById("city");
+        var cityName = cityInput.value.trim();
+        if (cityName === "") {
+          alert("Enter a city !!!");
+          event.preventDefault();
+        }
+      }
+    </script>
+  </body>
+</html>

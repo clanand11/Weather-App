@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&family=Sofia+Sans+Condensed:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+h2{
+    font-family: 'Forum', cursive;
+}
+
+#time{
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+}
+
+.text-center{
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 3.5rem;
+    color: beige;
+}
+
+#logo{
+    width: 80px;
+    height: 60px;
+    margin-right: 10px;
+    background: transparent;
+}
+
+.heading_new{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: self-start;
+    padding-top: 15px;
+}
+
+*{
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+body{
+    height: 100vh;
+}
+
+.container_main{
+    height: 100vh;
+    margin-bottom: 5px;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.main form{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.main input{
+    border: 1px solid black;
+    width: 80%;
+    height: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    background: transparent;
+}
+
+.main input::placeholder{
+    color: rgb(11, 11, 11);
+}
+
+.main input:focus{
+    background: transparent;
+}
+
+.main button{
+    width:50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 1px solid antiquewhite;
+}
+
+.main button:hover{
+    transform: scale(1.1);
+    background-color: rgba(250, 235, 215,0.5);
+    border: 1px solid rgb(56, 56, 56);
+    color: rgb(63, 63, 63);
+}
+
+.container_weather{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    color: antiquewhite;
+    padding: 10px;
+    border-radius: 10px;
+    background: transparent;
+    background-color: rgba(17, 17, 17, 0.5);
+
+}
+
+
+
+.container_forecast{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container_for{
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    padding: 10px 5px;
+    margin-left: 10px;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    background-color: rgba(17, 17, 17, 0.5);
+}
+
+.container_for h3{
+    font-family: 'Kalam', cursive;
+}
+
+img{
+    background-color: rgba(251, 245, 245, 0.5);
+    border-radius: 50px;
+}
+
+#description{
+    font-family: 'Poiret One', cursive;
+    font-size: 23px;
+}
